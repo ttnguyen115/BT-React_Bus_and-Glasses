@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 
 class SeatList extends Component {
-
-    handleBtnColor = (seat) => {
-        if (seat.TrangThai === true) return 'danger';
-        else if (seat.isBooking === true) return 'success';
-        else return 'secondary';
-    }
-
     render() {
         return (
             <div className="row">
@@ -17,7 +10,7 @@ class SeatList extends Component {
                             <button 
                                 disabled={seat.TrangThai} 
                                 style={{ width: '50px', height: '50px' }}
-                                className={`btn btn-${this.handleBtnColor(seat)}`}
+                                className={`btn btn-${seat.TrangThai ? 'danger' : seat.isBooking ? 'success' : 'secondary' }`}
                                 onClick={() => this.props.setOrderSeat(seat)}
                             >
                                 {seat.SoGhe}
